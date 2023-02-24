@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/series',SeriesController::class)
-    ->only('index','create','store','destroy');
+    ->except(['show']);
 
 //Código acima, substitiu o de baixo seguindo as rotas nomeadas do laravel.
     /*Route::controller(SeriesController::class)->group(function(){
