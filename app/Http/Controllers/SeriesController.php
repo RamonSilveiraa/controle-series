@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Models\Episode;
 use App\Models\Season;
 use App\Models\Series;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class SeriesController extends Controller
                 ]; 
             }
         }
+        Episode::insert($episodes);
 
         return to_route('series.index')
             ->with('mensagem.sucesso',"Série '{$serie->nome}' adicionada com sucesso");
