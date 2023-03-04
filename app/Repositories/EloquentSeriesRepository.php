@@ -7,7 +7,7 @@ use App\models\Season;
 use App\models\Series;
 use Illuminate\Support\Facades\DB;
 
-class SeriesRepository
+class EloquentSeriesRepository implements SeriesRepository
 {
     public function add(SeriesFormRequest $request): Series
     {
@@ -28,12 +28,12 @@ class SeriesRepository
                     $episodes[] = [
                         'season_id' => $season->id,
                         'number' => $j
-            ]; 
+                ]; 
+            }
         }
-    }
-        Episode::insert($episodes);
+            Episode::insert($episodes);
 
-        return $serie;
-    });
+            return $serie;
+        });
     }
 }
