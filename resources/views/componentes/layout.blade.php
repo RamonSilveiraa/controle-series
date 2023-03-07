@@ -9,6 +9,13 @@
 <body>
     <h1>{{$title}}</h1>
 
-  {{$slot}}
+      @isset($mensagemSucesso)
+      <div class="alert alert-success">
+          {{$mensagemSucesso}}
+      </div>
+      @endisset
+
+
+    {{$slot}}
 </body>
 </html>
