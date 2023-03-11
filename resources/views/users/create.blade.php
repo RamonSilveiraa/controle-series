@@ -8,7 +8,7 @@
 
         <div class="form-group">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" name="email" id="email" autofocus class="form-control">
+            <input type="email" name="email" id="email" class="form-control">
         </div>
 
         <div>

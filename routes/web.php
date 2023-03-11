@@ -5,8 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SeasonsController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Middleware\Autenticador;
-use App\Models\Episode;
-use Illuminate\Http\Request;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,5 +43,5 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('signin');
 Route::get('/login', [LoginController::class, 'destroy'])->name('logout');
 
-Route::get('/register', [UserController::class, 'create'])->name('users.create');
-Route::post('/register', [UserController::class, 'store'])->name('users.store');
+Route::get('/register', [UsersController::class, 'create'])->name('users.create');
+Route::post('/register', [UsersController::class, 'store'])->name('users.store');

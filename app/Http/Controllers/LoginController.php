@@ -11,6 +11,7 @@ class LoginController
         return view('login.index');
     }
 
+
     public function store(Request $request)
     {
         if (!Auth::attempt($request->only(['email', 'password']))){
@@ -26,4 +27,5 @@ class LoginController
 
         return to_route('login');
     }
+ 
 }

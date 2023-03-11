@@ -12,7 +12,6 @@
         </div>
         <button class="btn btn-primary mt-3">
             Entrar</button>
-    
             
         <a href="{{ route('users.create')}}" class="btn btn-secundary mt-3">
             Registrar
