@@ -43,5 +43,10 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('signin');
 Route::get('/login', [LoginController::class, 'destroy'])->name('logout');
 
+//Esse é igual o de cima, mas pelo nome login, não estava funcionando
+Route::get('/logar', [LoginController::class, 'logar'])->name('login');
+Route::post('/logar', [LoginController::class, 'store'])->name('signin');
+Route::get('/logar', [LoginController::class, 'destroy'])->name('logout');
+
 Route::get('/register', [UsersController::class, 'create'])->name('users.create');
 Route::post('/register', [UsersController::class, 'store'])->name('users.store');

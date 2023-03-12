@@ -6,7 +6,13 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController
 {
+    
     public function index()
+    {
+        return view('login.index');
+    }
+
+    public function logar()
     {
         return view('login.index');
     }
