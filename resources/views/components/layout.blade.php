@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-ligth bg-ligth">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{route('series.index')}}">Home</a>
 
-        <a href="{{route('logout')}}">Sair</a>
+        @auth
+        <a href="{{route('logout')}}">Sair</a>    
+        @endauth
 
+        @guest
+        <a href="{{route('login')}}">Entrar</a>    
+        @endguest
+        
 </nav>
 
 <div class="container">
