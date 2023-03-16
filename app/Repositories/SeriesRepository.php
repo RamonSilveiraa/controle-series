@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\http\Requests\SeriesFormRequest;
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 
 interface SeriesRepository

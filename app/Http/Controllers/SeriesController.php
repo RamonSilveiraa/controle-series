@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\Autenticador;
 use App\Http\Requests\SeriesFormRequest;
 use App\Models\Series;
 use App\Repositories\SeriesRepository;
@@ -12,16 +11,16 @@ class SeriesController extends Controller
 {
     public function __construct(private SeriesRepository $repository)
     {
-        $this->middleware(Autenticador::class)->except('index');
+        $this->middleware('auth')->except('index');
     }
 
     public function index(Request $request)
     {
         $series = Series::all();
         $mensagemSucesso = session('mensagem.sucesso');
-        //$request->session()->forget('mensagem.sucesso');
 
-        return view('series.index')->with('series', $series)->with('mensagemSucesso', $mensagemSucesso);
+        return view('series.index')->with('series', $series)
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function create()
@@ -34,21 +33,15 @@ class SeriesController extends Controller
         $serie = $this->repository->add($request);
 
         return to_route('series.index')
-            ->with('mensagem.sucesso',"Série '{$serie->nome}' adicionada com sucesso");
-
+            ->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
     }
 
-    public function destroy(Series $series, Request $request)
+    public function destroy(Series $series)
     {
         $series->delete();
-        
-        return to_route('series.index')
-            ->with('mensagem.sucesso',"Série '{$series->nome}' removida com sucesso"); 
 
-        //o "flash" não precisa do session->forget na index
-        //$request->session()->flash('mensagem.sucesso',"Série '{$series->nome}' removida com sucesso");
-        //$request->session()->put('mensagem.sucesso','Série removida com sucesso');
-        
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
     }
 
     public function edit(Series $series)

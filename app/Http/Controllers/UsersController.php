@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -17,7 +18,7 @@ class UsersController
     {
         $data = $request->except(['_token']);
         $data['password'] = Hash::make($data['password']);
-        
+
         $user = User::create($data);
         Auth::login($user);
 

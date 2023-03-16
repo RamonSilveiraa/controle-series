@@ -6,7 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class SeriesFormRequest extends FormRequest
 {
-    public function authorize(): bool
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
     {
         return true;
     }
@@ -14,21 +19,12 @@ class SeriesFormRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'nome' => ['required','min:2']
-        ];
-    }
-
-    public function messages()
-    {
-        return[
-            //'nome.*' => "mensagem para todos os erros"
-            'nome.required' => "O campo nome é obrigatório",
-            'nome.min' => "É necessário no mímino :min caracteres"
+            'nome' => ['required', 'min:2'],
         ];
     }
 }
